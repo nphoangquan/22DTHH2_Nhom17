@@ -7,6 +7,7 @@ function sayGoodbye(name) {
     return `Goodbye, ${name}! See you again.`;
 }
 
+console.log(greetUser("Developer"));
 console.log(sayGoodbye("Developer"));
 
 module.exports = { greetUser, sayGoodbye };
