@@ -107,41 +107,6 @@ FFMPEG_OPTIONS = {
     'options': '-vn'  # Chỉ phát audio, không có video
 }
 
-class MusicPlayer:
-    def __init__(self):
-        self.queue = deque()
-        self.current_song = None
-        self.is_playing = False
-        self.volume = 0.5
-        
-    def add_song(self, song):
-        self.queue.append(song)
-        
-    def get_next_song(self):
-        if self.queue:
-            self.current_song = self.queue.popleft()
-            return self.current_song
-        self.current_song = None
-        return None
-        
-    def clear_queue(self):
-        self.queue.clear()
-        self.current_song = None
-        
-    def get_queue_info(self):
-        if not self.queue and not self.current_song:
-            return "Không có âm thanh nào trong queue"
-        
-        info = f"🎵 **Đang phát:** {self.current_song['title'] if self.current_song else 'Không có'}\n\n"
-        
-        if self.queue:
-            info += "📋 **Queue:**\n"
-            for i, song in enumerate(self.queue, 1):
-                info += f"{i}. {song['title']} - {song['duration']}\n"
-        else:
-            info += "📋 **Queue:** Trống"
-            
-        return info
 
 async def get_audio_info(url):
     """Lấy thông tin âm thanh từ nhiều nguồn khác nhau"""
